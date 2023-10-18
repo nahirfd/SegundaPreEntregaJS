@@ -80,13 +80,11 @@ while (option < listaYerbas.length) {
 }
 
 function mostrarProductos() {
-  const stock = listaYerbas.map(objeto => {
-    return {
-      id: objeto.id,
-      sabor: objeto.sabor,
-      precio: objeto.precio
-    };
-  });
+  let listaStock = "Productos de la tienda: \n";
+  for (let index = 0; index < listaYerbas.length; index++) {
+    listaStock = listaStock + `ID: ${listaYerbas[index].id}, Sabor: ${listaYerbas[index].sabor}, Precio:$ ${listaYerbas[index].precio}\n` 
+  }
+  alert(listaStock)
 }
 
 
@@ -95,29 +93,21 @@ function AgregarAlCarro(productoComprado) {
 }
 
 function mostrarCarrito() {
-  const carrito = carritoFlorentina.map(objeto => {
-    return {
-      id: objeto.id,
-      sabor: objeto.sabor,
-      precio: objeto.precio
+  let listaStock = "Productos en el carrito: \n";
+  for (let index = 0; index < carritoFlorentina.length; index++) {
+    listaStock = listaStock + `ID: ${carritoFlorentina[index].id}, Sabor: ${carritoFlorentina[index].sabor}, Precio:$ ${carritoFlorentina[index].precio}\n` 
+  }
+  alert(listaStock)
     };
-  });
-
-  console.log(carrito);
-  
-}
-/* const carrito = carritoFlorentina.map(objeto => objeto.precio);
-console.log(carrito) */
 
 
 function pagar() {
   if (carritoFlorentina.length === 0) {
-    console.log("El carrito está vacío.");
+    alert("El carrito está vacío.");
     return;
   } else {
-    let total = carritoFlorentina.reduce((acum, p) => {
-      return acum + p.precio
-    }, 0)
-  }
-  console.log("El total a pagar es: $" + total)
+    let total = 0
+    carritoFlorentina.forEach ((p) => (total+= p.precio))
+  alert("El total a pagar es: $" + total)
+}
 }
