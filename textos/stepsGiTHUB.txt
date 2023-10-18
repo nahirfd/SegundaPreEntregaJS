@@ -34,7 +34,7 @@
 	Settings/Page 
 	Definir el origen (source)
 	Save
-	URL con tu proyecto
+	URL con tu proyecto (en About creo el deploy)
 
 CLONE
 1- Crear un nuevo respositorio local en tu computarora
