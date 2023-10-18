@@ -22,7 +22,7 @@ let option = prompt(
 let carritoFlorentina = []
 
 //Hasta que el usuario no ponga salir (5), la compra estara activa
-while (option < listaYerbas.length) {
+while (option <= listaYerbas.length) {
 
   switch (option) {
 
@@ -55,6 +55,7 @@ while (option < listaYerbas.length) {
       break;
 
     case "4":
+
 
       pagarCuenta();
 
@@ -103,6 +104,7 @@ function pagarCuenta() {
   }, 0)
   alert("El total a pagar es:$ " + totalCarrito);
 }
+
 
 /* carritoFlorentina.forEach((p, i) =>{
   console.log(`${i}:${p}`)
