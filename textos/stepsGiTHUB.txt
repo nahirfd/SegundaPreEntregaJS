@@ -1,0 +1,70 @@
+1- Registrarse en https://github.com
+2- Crea un nuevo respositorio
+3- Poner un nombre al repositorio (público o privado)
+4- CONSOLA- en la carpeta de tu respositorio local escribir los comandos:
+	git remote add origin https://github.com/tuuser/repositorio  
+	(enlace entre un repositorio local y un repositorio remoto)
+5- CONSOLA- subimos los archivos al repositorio remoto
+	git push origin master  
+5- Login de github 
+6- Comprobar que el respositorio se subió a Github	
+7- Crear un archivo readme.md desde Github
+8- CONSOLA - se baja el archivo de Github a mi repositorio local
+	git pull origin master
+8- Crear un archivo con el nombre .gitignore
+9- CONSOLA - pasamos a staging y comiteamos los cambios
+	git status
+
+	git add .
+	git commit -m "subida xxxxx"
+	git push origin master
+
+10- Comprobar que el archivo .gitignore se subió a Github
+11- CONSOLA - creamos una nueva rama
+	git branch nuevaRama
+12- Realizamos algun cambio en nuestro respositorio local
+13- CONSOLA 
+	git checkout nuevaRama 
+	git add .
+	git commit -m "subimos los cambios xxxxx"
+14-CONSOLA - subimos al repositorio remoto la nueva rama
+	git push origin nuevaRama
+15- Comprobar que se subió a Github la nueva rama
+16- GITHUB PAGES
+	Settings/Page 
+	Definir el origen (source)
+	Save
+	URL con tu proyecto
+
+CLONE
+1- Crear un nuevo respositorio local en tu computarora
+2- En Github buscar un proyecto para clonar https://github.com/twbs
+3- En el botón verde de la derecha "clone/download" seleccionar CLONE
+4- CONSOLA
+	git clone https://github.com/xxxxxxxxx
+
+
+
+GIT REMOTE
+git remote add[origin] [SSH/HTTPS] Conecta un repositorio con nuestro equipo local.
+git remote -v Lista las conexiones existentes.
+git remote remove [origin]Elimina una conexión con algún repositorio
+
+GIT PULL / FETCH
+git fetch origin master  ---- nos traemos los cambios del respositorio remoto
+git fetch origin ramaRemota --- nos traemos una rama del repositorio remoto
+git merge origin master  --- unimos la version local y la remota
+git pull origin master --- al usar git pull estas combinando git fetch + git merge
+
+Git fetch trae los cambios, pero los deja en otro branch, hasta que se hace el git merge para traerlos al branch local.
+
+PUSH
+git push origin master --- SUBIMOS CAMBIOS AL REPOSITORIO REMOTO
+git push -u origin nuevaRama   --- SUBIMOS UNA RAMA
+
+
+
+https://www.sourcetreeapp.com/
+
+
+cls : limpia consola
