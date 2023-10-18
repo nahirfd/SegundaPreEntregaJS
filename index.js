@@ -28,7 +28,7 @@ while (option < listaYerbas.length) {
 
     case "1":
 
-    const stock= []
+      const stock = []
 
       mostrarProductos();
 
@@ -56,17 +56,13 @@ while (option < listaYerbas.length) {
 
     case "4":
 
-      pagar();
+      pagarCuenta();
 
       break;
 
     case "5":
 
       break;
-
-    default:
-
-      console.log("Opción inválida.");
   }
 
   option = prompt(
@@ -82,7 +78,7 @@ while (option < listaYerbas.length) {
 function mostrarProductos() {
   let listaStock = "Productos de la tienda: \n";
   for (let index = 0; index < listaYerbas.length; index++) {
-    listaStock = listaStock + `ID: ${listaYerbas[index].id}, Sabor: ${listaYerbas[index].sabor}, Precio:$ ${listaYerbas[index].precio}\n` 
+    listaStock = listaStock + `ID: ${listaYerbas[index].id}, Sabor: ${listaYerbas[index].sabor}, Precio:$ ${listaYerbas[index].precio}\n`
   }
   alert(listaStock)
 }
@@ -95,19 +91,19 @@ function AgregarAlCarro(productoComprado) {
 function mostrarCarrito() {
   let listaStock = "Productos en el carrito: \n";
   for (let index = 0; index < carritoFlorentina.length; index++) {
-    listaStock = listaStock + `ID: ${carritoFlorentina[index].id}, Sabor: ${carritoFlorentina[index].sabor}, Precio:$ ${carritoFlorentina[index].precio}\n` 
+    listaStock = listaStock + `ID: ${carritoFlorentina[index].id}, Sabor: ${carritoFlorentina[index].sabor}, Precio:$ ${carritoFlorentina[index].precio}\n`
   }
   alert(listaStock)
-    };
+};
 
 
-function pagar() {
-  if (carritoFlorentina.length === 0) {
-    alert("El carrito está vacío.");
-    return;
-  } else {
-    let total = 0
-    carritoFlorentina.forEach ((p) => (total+= p.precio))
-  alert("El total a pagar es: $" + total)
+function pagarCuenta() {
+  const totalCarrito = carritoFlorentina.reduce((acumulador, objetoActual) => {
+    return acumulador + objetoActual.precio
+  }, 0)
+  alert("El total a pagar es:$ " + totalCarrito);
 }
-}
+
+/* carritoFlorentina.forEach((p, i) =>{
+  console.log(`${i}:${p}`)
+}) */
