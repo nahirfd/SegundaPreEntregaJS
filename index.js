@@ -1,111 +1,75 @@
-//mensaje bienvenida
-alert("Bienvenido al carrito de compras de Florentina")
+const shopContent = document.getElementById("shopContent");
 
-//Lista de productos en stock
-const listaYerbas = [
-  { id: "1", sabor: "manzanila", precio: 2500 },
-  { id: "2", sabor: "menta y poleo", precio: 2500 },
-  { id: "3", sabor: "burrito y peperina", precio: 2500 },
-  { id: "4", sabor: "citric", precio: 2500 },
-]
+const verCarrito = document.getElementById("verCarrito");
 
-let option = prompt(
-  "Ingrese una opción:\n\n" +
-  "1. Ver productos\n" +
-  "2. Agregar al carrito\n" +
-  "3. Ver carrito\n" +
-  "4. Comprar\n" +
-  "5. Salir"
-);
+const modalContainer = document.getElementById("modal-container");
 
-//declaro carrito vacio
-let carritoFlorentina = []
+let carrito = [];
 
-//Hasta que el usuario no ponga salir (5), la compra estara activa
-while (option <= listaYerbas.length) {
+productos.forEach((product) => {
+  let content = document.createElement("div");
+  content.className = "card"
+  content.innerHTML = `
+  <img src="${product.img}">
+  <h3>${product.nombre}</h3>
+  <p class="price"> Price: $${product.precio}</p>
+  `;
 
-  switch (option) {
+  shopContent.append(content);
 
-    case "1":
+  let comprar = document.createElement("button")
+  comprar.innerText = "Agregar al carrito"
+  comprar.className = "comprar"
+  content.append(comprar)
 
-      const stock = []
+  comprar.addEventListener("click", () => {
+    carrito.push({
+      id: product.id,
+      img: product.img,
+      nombre: product.nombre,
+      precio: product.precio,
+    })
+    console.log(carrito)
+  })
+});
 
-      mostrarProductos();
+  verCarrito.addEventListener("click", () => {
+  modalContainer.innerHTML = "";
+  modalContainer.style.display = "flex";
+  const modalHeader = document.createElement("div");
+  modalHeader.className = "modal-header";
+  modalHeader.innerHTML = `
+  <h1 class="modal-header-tittle"> Carrito <h1>
+  `;
+  modalContainer.append(modalHeader)
 
-      break;
+  const modalbutton = document.createElement("h1");
+  modalbutton.innerText = "x";
+  modalbutton.className = "modal-header-button";
 
-    case "2":
+  modalbutton.addEventListener("click", () => {
+    modalContainer.style.display = "none";
+  })
 
-      let productoComprado = prompt("Ingrese el número del producto:");
+  modalHeader.append(modalbutton);
 
-      if (productoComprado < 1 || productoComprado > listaYerbas.length) {
-        console.log("Opción inválida.");
+  carrito.forEach((product) => {
+    let carritoContent = document.createElement("div");
+    carritoContent.className = "modal-content"
+    carritoContent.innerHTML = `
+  <img src=" ${product.img}">
+  <h3> ${product.nombre}<h3>
+  <p> ${product.precio} </p>
+  `;
+    modalContainer.append(carritoContent)
+  });
 
-        break;
-      }
+  const total = carrito.reduce((accum, el) => accum + el.precio, 0);
 
-      AgregarAlCarro(listaYerbas[productoComprado - 1]);
+  const totalCarrito = document.createElement("div")
+  totalCarrito.className = "total-content"
+  totalCarrito.innerHTML = `total a pagar: $ ${total}`;
+  modalContainer.append(totalCarrito);
 
-      break;
+});
 
-    case "3":
-
-      mostrarCarrito();
-
-      break;
-
-    case "4":
-
-
-      pagarCuenta();
-
-      break;
-
-    case "5":
-
-      break;
-  }
-
-  option = prompt(
-    "Ingrese una opción:\n\n" +
-    "1. Ver productos\n" +
-    "2. Agregar al carrito\n" +
-    "3. Ver carrito\n" +
-    "4. Comprar\n" +
-    "5. Salir"
-  );
-}
-
-function mostrarProductos() {
-  let listaStock = "Productos de la tienda: \n";
-  for (let index = 0; index < listaYerbas.length; index++) {
-    listaStock = listaStock + `ID: ${listaYerbas[index].id}, Sabor: ${listaYerbas[index].sabor}, Precio:$ ${listaYerbas[index].precio}\n`
-  }
-  alert(listaStock)
-}
-
-
-function AgregarAlCarro(productoComprado) {
-  carritoFlorentina.push(productoComprado);
-}
-
-function mostrarCarrito() {
-  let listaStock = "Productos en el carrito: \n";
-  for (let index = 0; index < carritoFlorentina.length; index++) {
-    listaStock = listaStock + `ID: ${carritoFlorentina[index].id}, Sabor: ${carritoFlorentina[index].sabor}, Precio:$ ${carritoFlorentina[index].precio}\n`
-  }
-  alert(listaStock)
-};
-
-
-function pagarCuenta() {
-  const totalCarrito = carritoFlorentina.reduce((acumulador, objetoActual) => {
-    return acumulador + objetoActual.precio
-  }, 0)
-  alert("El total a pagar es:$ " + totalCarrito);
-}
-
-
-/* carritoFlorentina.forEach((p, i) =>{
-  console.log(`${i}:${p}`)
-}) */
