@@ -33,6 +33,7 @@
 
 .banner h1 {
     margin: 0;
+    padding: 50px;
     color: rgb(244, 255, 240);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     font-size: 62px;
@@ -105,9 +106,9 @@
 .modal-container {
     width: 60%;
     margin: 0 10%;
-    max-height: 88vh;
-    color: #f1f1e5;
-    background-color: #2f3c1b;
+    max-height: 80vh;
+    color: #2f3c1b;
+    background-color: #fbfcf4;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -115,7 +116,7 @@
     z-index: 9;
     top: 12vh;
     scrollbar-color: none;
-
+    font-size: 0.8em;
 }
 
 .modal-container::-webkit-scrollbar {
@@ -125,8 +126,8 @@
 .modal-header {
     display: flex;
     justify-content: space-between;
-    background-color: #314612;
-    color: #dfdfb7;
+    background-color: #f5f9d9;
+    color:#2f3c1b;
     width: 100%;
     padding: 30px;
 }
